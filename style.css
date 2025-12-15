@@ -49,9 +49,9 @@ h2, p {
     border-radius: .4em;
     margin-bottom: 20px;
     box-shadow: 1px 1px 10px var(--line);
-    padding: min(3em, 15%);
+    padding: min(1em, 15%);
     h2,p {
-        margin-top: 1em;
+        margin-top: .5em;
     }
 }
 
@@ -75,7 +75,10 @@ h2, p {
     padding: 5px 1em;
     background-color: var(--base);
     border-left: 2px solid var(--line);
-    ul{list-style: none;}
+    ul {
+        list-style: none;
+    }
+
     position: sticky;
     top: 0;
     align-self: start;
@@ -91,13 +94,17 @@ h2, p {
     display: flex;
     justify-content: flex-end;
     margin-bottom: 16px;
-    .logo{font-weight: 600;}
+    .logo {
+        font-weight: 600;
+    }
 }
 
 #sidebar ul li.active a{
     color: var(--accent2);
     font-weight: 600;
-    svg{fill: var(--accent2);}
+    svg {
+        fill: var(--accent2);
+    }
 }
 #sidebar a, #sidebar .dropdownButton, #sidebar .logo{
     border-radius: .5em;
@@ -129,7 +136,9 @@ h2, p {
 
 #sidebar a:hover, #sidebar .dropdownButton:hover {
     background-color: var(--hover);
-    svg:first-child{transform: scale(1.3);}
+    svg:first-child {
+        transform: scale(1.3);
+    }
 }
 
 #sidebar .sub-menu {
@@ -163,21 +172,26 @@ h2, p {
     border-radius: .5em;
     background: none;
     cursor: pointer;
-    svg{transition: rotate 150ms ease;}
+    svg {
+        transition: rotate 150ms ease;
+    }
 }
 
-@media (max-width: 800px){
-    body{
+@media (max-width: 800px) {
+    body {
         grid-template-columns: 1fr;
     }
-    main{
+
+    main {
         padding: 2em 1em 60px 1em;
     }
-    .frame{
+
+    .frame {
         border: none;
         padding: 0;
     }
-    #sidebar{
+
+    #sidebar {
         height: 60px;
         width: 100%;
         border-left: none;
@@ -207,12 +221,11 @@ h2, p {
             justify-content: center;
         }
 
-
-        ul li span, ul li:first-child, ul .dropdownButton svg:last-child{
+        ul li span, ul li:first-child, ul .dropdownButton svg:last-child {
             display: none;
         }
 
-        ul li .sub-menu.show{
+        ul li .sub-menu.show {
             position: fixed;
             bottom: 60px;
             left: 0;
@@ -224,11 +237,11 @@ h2, p {
 
             > div{overflow-x: auto;}
 
-            li{
+            li {
                 display: inline-flex;
             }
 
-            a{
+            a {
                 box-sizing: border-box;
                 padding: 1em;
                 width: auto;
