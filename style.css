@@ -41,6 +41,29 @@ h1, #sidebar {
 h2, p {
     font-family: 'Heebo';
 }
+.likeh2 {
+    font-size: 1.5em;
+    color: var(--text);
+    font-weight: 700;
+}
+.biggerFont {
+    font-size: 1.1em;
+}
+
+/* עיצוב ספיציפי לקלאסים */
+.break {
+    clear: both;
+    width: 100%;
+    height: 2px;
+    background-color: var(--line);
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+.bottomMargin50 {
+    margin-bottom: 50px;
+}
+
+
 
 /* עיצוב התוכן המרכזי */
 main {
@@ -61,11 +84,47 @@ main {
         margin-top: .5em;
     }
 }
+/* עיצוב בסיסי של אלמנט כפתור */
+a button.link {
+    width: 20vh;
+    height: 5vh;
+    margin: 3vh;
+    background-color: var(--base);
+    border: solid 2px var(--line);
+    border-radius: .3em;
+    cursor: pointer;
+}
 
-/* אנימציית מעבר */
+a button.link:hover {
+    transform: scale(1.05);
+    background-color: var(--hover);
+    color: var(--text);
+    font-weight: 900;
+    border: solid 1px var(--line);
+}
+
+/* אנימציות מעבר */
 .frame:hover:not(.noanimation) {
     box-shadow: 5px 5px 10px var(--line);
     transform: scale(1.005);
+}
+
+.hoverable:hover{
+    transform: scale(1.01);
+}
+
+.hoverableText:hover {
+    text-decoration: underline;
+    text-indent: 2em;
+    text-shadow: 1px 1px var(--line);
+    margin-right: .5em;
+}
+
+h2.hoverableText:hover {
+    text-decoration: underline;
+    text-indent: .2em;
+    text-shadow: 1px 1px var(--line);
+    margin-right: .5em;
 }
 
 /* עיצוב לתמונה בעמוד הבית */
@@ -79,15 +138,15 @@ img#selfie {
     filter: drop-shadow(4px 4px 5px);
 }
 
-#massive {
-    font-size: 7em;
+#massiveFont {
+    font-size: 5em;
 }
 
 /* עיצוב לרשימת המשרות בעמוד הבית */
 #jobs>li {
     list-style: none;
     font-weight: 800;
-    margin: .5em;
+    margin: .8em;
     color: var(--text2);
 }
 

@@ -28,5 +28,3 @@ function closeAllSubMenus(){
     ul.classList.remove('show')
     ul.previousElementSibling.classList.remove('rotate')})
 }
-
-// מכיוון שבזמן זה עוד לא למדנו JS קוד זה הוא לא קוד מקורי שלי ועקבתי אחרי השיעור הנ"ל :https://www.youtube.com/watch?v=R7b3OlEyqug 
