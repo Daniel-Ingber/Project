@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Daniel's Portfolio</title>
+    <title>Daniel's Portfolio - צור קשר</title>
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
 </head>
@@ -59,6 +59,42 @@
     
     <!-- התוכן של העמוד -->
     <main>
+        <div class="frame">
+            <h1>צור קשר</h1>
+            <form action="#" method="post" autocomplete="off" class="form">
+                <div>
+                    <h2>שם מלא:</h2>
+                    <input type="text" placeholder="השם המלא שלך">
+                    <p class="error">הקלט אינו טקסט!</p>
+                </div>
+                <div>
+                    <h2>אימייל:</h2>
+                    <input type="email" placeholder="youremail@gmail.com">
+                    <p class="error">הקלט אינו אימייל תקין!</p>
+                </div>
+                <div>
+                    <h2>סיבת הפנייה:</h2>
+                    <select name="סיבת פנייה" id="query">
+                        <option value="" hidden></option>
+                        <option value="fullstack">פיתוח Fullstack</option>
+                        <option value="backend">פיתוח Backend</option>
+                        <option value="qa">QA</option>
+                        <option value="editing">עריכת תוכן וסרטונים</option>
+                        <option value="other">אחר..</option>
+                    </select>
+                    <p class="error">אנא בחר אופציה!</p>
+                </div>
+                <div>
+                    <h2>פירוט הפנייה:</h2>
+                    <textarea wrap="soft" rows="5" maxlength="160" id="explain"></textarea>
+                </div>
+                    <input type="submit" id="submit" value="שלח פנייה">
+                <div>
+                </div>
+                <div>
+                </div>
+            </form>
+        </div>
     </main>
 </body>
 </html>

@@ -35,8 +35,11 @@ body {
 * {
     font-family: 'Alef'
 }
-h1, #sidebar {
+h1, #sidebar, .form {
     font-family: 'Secular One';
+}
+h1 {
+    text-shadow: 3px 2px 1px var(--accent);
 }
 h2, p {
     font-family: 'Heebo';
@@ -56,6 +59,14 @@ h2, p {
     width: 100%;
     height: 2px;
     background-color: var(--line);
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+.breakNoLine {
+    clear:left;
+    width: auto;
+    height: 2px;
     margin-top: 1em;
     margin-bottom: 1em;
 }
@@ -85,7 +96,7 @@ main {
     }
 }
 /* עיצוב בסיסי של אלמנט כפתור */
-a button.link {
+a button.link, input[type="submit"] {
     width: 20vh;
     height: 5vh;
     margin: 3vh;
@@ -102,6 +113,55 @@ a button.link:hover {
     font-weight: 900;
     border: solid 1px var(--line);
 }
+
+.form {
+    width: auto;
+    height: auto;
+    background-color: var(--accent);
+    border: 2px solid var(--line);
+    border-radius: .5em;
+    justify-items: right;
+    padding: 3em;
+    margin: 2em;
+}
+
+.form div {   
+    justify-self: right;
+
+    input {
+        border: 2px solid var(--line);
+        border-radius: .2rem;
+        width: 60vw;
+        text-indent: 1rem;
+    }
+    input:focus {
+        outline: none;
+        transform: scale(1.05);
+        box-shadow: 1px 2px 10px var(--accent2);
+        }
+    select {
+        border: 2px solid var(--line);
+        width: 60vw;
+        text-indent: 1rem;   
+    }
+    select:focus {
+        outline: none;
+        transform: scale(1.05);
+        box-shadow: 1px 2px 10px var(--accent2);
+    }
+    #explain {
+        height: 15vh;
+        width: 60vw;
+        border: 2px solid var(--line);
+        border-radius: .2rem;
+    }
+    #explain:focus {
+        outline: none;
+        transform: scale(1.05);
+        box-shadow: 1px 2px 10px var(--accent2);
+        }
+}
+
 
 /* אנימציות מעבר */
 .frame:hover:not(.noanimation) {
@@ -139,7 +199,7 @@ img#selfie {
 }
 
 #massiveFont {
-    font-size: 5em;
+    font-size: 4em;
 }
 
 /* עיצוב לרשימת המשרות בעמוד הבית */
@@ -265,6 +325,7 @@ img#selfie {
 /* רספונסיביות של האתר לטלפונים */
 @media (max-width: 800px) {
     body {
+        font-size: 70%;
         grid-template-columns: 1fr;
     }
 
