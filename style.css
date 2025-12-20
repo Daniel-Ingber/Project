@@ -4,14 +4,37 @@
 
 /* פלטת הצבעים לאתר */
 :root {
---base: #ccaa81;
---line: #805a2c;
---hover: #e0d1bf;
---text: #805a2c;
---accent: #caa688;
---accent2: #8f6a4b;
---text2: #4e381d;
+    --base: #ccaa81;
+    --base-light: #d8b892;
+    --base-dark: #b8946c;
+    --line: #805a2c;
+    --navbar: #b08f6a;
+    --hover: #e0d1bf;
+    --text: #805a2c;
+    --accent: #caa688;
+    --accent-light: #d7b79a;
+    --accent-dark: #b58f72;
+    --accent2: #9b7458;
+    --text2: #4e381d;
+    --frame:#ffffff8f;
 }
+:root.dark {
+    --base: #3a2e22;          
+    --base-light: #4a3b2d;    
+    --base-dark: #2c231a;     
+    --line: #b89263;
+    --navbar: #4a3b2d;          
+    --hover: #4f4031;         
+    --text: #d9c7b0;          
+    --accent: #b58f72;        
+    --accent-light: #c7a588;  
+    --accent-dark: #9a765a;   
+    --accent2: #7d5d45;       
+    --text2: #bfa78c;
+    --frame: #0000004e;     
+}
+
+
 
 /* איפוס הגדרות אתר לבחירה שלי */
 * {
@@ -25,13 +48,27 @@
 body {
     min-height: 100vh;
     min-height: 100dvh;
-    background-color: var(--base);
+    background: linear-gradient(to bottom, var(--base-light), var(--base), var(--base-dark));
     color: var(--text);
     display: grid;
     grid-template-columns: auto 1fr;
 }
 
 /* טיפוגרפיה */
+h1 {
+    font-size: clamp(2rem, 1rem + 4vw, 4rem);
+}
+
+h2 {
+    font-size: clamp(1.5rem, 0.75rem + 3vw, 3rem);
+}
+p {
+    font-size: clamp(1rem, 0.5rem + 1vw, 1.25rem);
+}
+button {
+    font-size: clamp(0.875rem, 0.5rem + 1vw, 1.125rem);
+}
+
 * {
     font-family: 'Alef'
 }
@@ -85,7 +122,7 @@ main {
 }
 /* עיצוב בסיסי של אלמנט בלוק */
 .frame {
-    background-color: #ffffff8f;
+    background-color: var(--frame);
     border: 1px solid var(--line);
     border-radius: .4em;
     margin-bottom: 20px;
@@ -113,11 +150,11 @@ a button.link:hover {
     font-weight: 900;
     border: solid 1px var(--line);
 }
-
+/* עיצוב טופס צור קשר */
 .form {
     width: auto;
     height: auto;
-    background-color: var(--accent);
+    background-color: var(--accent-dark);
     border: 2px solid var(--line);
     border-radius: .5em;
     justify-items: right;
@@ -136,7 +173,7 @@ a button.link:hover {
     }
     input:focus {
         outline: none;
-        transform: scale(1.05);
+        transform: scale(1.005);
         box-shadow: 1px 2px 10px var(--accent2);
         }
     select {
@@ -146,7 +183,7 @@ a button.link:hover {
     }
     select:focus {
         outline: none;
-        transform: scale(1.05);
+        transform: scale(1.005);
         box-shadow: 1px 2px 10px var(--accent2);
     }
     #explain {
@@ -162,12 +199,40 @@ a button.link:hover {
         }
 }
 
+/* עיצוב טאבים לעמוד שירותים */
+.tab {
+    display: none;
+    width: 90%;
+    height: fit-content;
+    border: 2px solid var(--line);
+    padding: 1rem;
+    background: linear-gradient(45deg, var(--accent-light), var(--accent), var(--accent-dark));
+    margin-bottom: 2em;
+    border-top-left-radius: 1em;
+    border-bottom-left-radius: 1em;
+    border-bottom-right-radius: 1em;
+}
+.tabButtons {
+    display: flex;
+    flex-wrap: nowrap;
+    button {
+        background-color: var(--accent);
+        border: 1px solid var(--line);
+        margin: 0;
+        padding: clamp(0.4em, 0.2em + 1vw, 1em);
+        cursor: pointer;
+    }
+    button:hover {
+            background-color: var(--accent2);
+        }
+    button.activeTab {
+        background-color: var(--accent2);
+        font-size: 101%;
+    }
+}
+
 
 /* אנימציות מעבר */
-.frame:hover:not(.noanimation) {
-    box-shadow: 5px 5px 10px var(--line);
-    transform: scale(1.005);
-}
 
 .hoverable:hover{
     transform: scale(1.01);
@@ -198,10 +263,6 @@ img#selfie {
     filter: drop-shadow(4px 4px 5px);
 }
 
-#massiveFont {
-    font-size: 4em;
-}
-
 /* עיצוב לרשימת המשרות בעמוד הבית */
 #jobs>li {
     list-style: none;
@@ -216,7 +277,7 @@ img#selfie {
     height: 100vh;
     width: 190px;
     padding: 5px 1em;
-    background-color: var(--base);
+    background-color: var(--navbar);
     border-left: 2px solid var(--line);
     ul {
         list-style: none;
@@ -229,6 +290,17 @@ img#selfie {
     overflow: hidden;
     text-wrap: nowrap;
 }
+#sidebar > ul {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+#sidebar .theme-section {
+    margin-top: auto;
+}
+
+
 #sidebar.close{
         padding: 5px;
         width: 60px;
@@ -253,12 +325,14 @@ img#selfie {
 #sidebar a, #sidebar .dropdownButton, #sidebar .logo{
     border-radius: .5em;
     padding: .8em;
+    padding-left: 0;
     text-decoration: none;
     color: var(--text);
     display: flex;
     align-items: center;
     gap: 1em;
 }
+
 
 .dropdownButton {
     width: 100%;
@@ -320,12 +394,45 @@ img#selfie {
         transition: rotate 150ms ease;
     }
 }
+
+#sidebar .darkMode {
+    width: auto;
+    height: auto;
+    padding: .3em;
+    display: flex;
+    align-items: center;
+    gap: .5em;
+    font-size: 24px;
+    border: none;
+    border-top: 1px solid var(--line);
+    background: none;
+    cursor: pointer;
+    line-height: 24px;
+
+    .icon {
+        display: inline-block;
+        transition: 400ms ease;
+    }
+}
+#sidebar .darkMode .label {
+    font-size: 16px;
+    color: var(--text);
+}
+#sidebar .darkMode.animate .icon {
+    opacity: 0.2;
+}
+#sidebar .darkMode:hover {
+    :first-child{
+    transform: scale(1.3);
+    }
+}
+
+
 /* סוף העיצוב של הניווט צד */
 
 /* רספונסיביות של האתר לטלפונים */
 @media (max-width: 800px) {
     body {
-        font-size: 70%;
         grid-template-columns: 1fr;
     }
 
@@ -336,6 +443,13 @@ img#selfie {
     .frame {
         border: none;
         padding: 1em;
+    }
+    image#selfie {
+        float: none;
+        display: block;
+        margin: 1em auto 6em auto; 
+        width: clamp(10em, 40vw, 16em);
+        height: auto; 
     }
 /* שינוי ניווט הצד לניווט תחתון בשביל חווית משתמש נוחה יותר */
     #sidebar {

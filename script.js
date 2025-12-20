@@ -1,6 +1,7 @@
 // קביעת משתנים קבועים לשימוש בפונקציות (משתנים שלא יישתנו ולכן הם בconst)
 const toggleButton = document.getElementById('toggleButton')
 const sidebar = document.getElementById('sidebar')
+var isDark = false;
 // פונקציה לפתיחת תפריט הניווט על ידי שינוי המחלקות שלהם (בשימוש עם toggle)
 function toggleSidebar(){
     sidebar.classList.toggle('close')
@@ -28,3 +29,43 @@ function closeAllSubMenus(){
     ul.classList.remove('show')
     ul.previousElementSibling.classList.remove('rotate')})
 }
+
+function displayTab(className, idName, button){
+    // הפונקצייה מכינה 2 מאגרים של מחלקות, אחד המאגר של כל הכפתורים שמופעלים, והשני המאגר של כל התוכן של הטאבים, היא משנה את כל הכפתורים שכרגע הם פועלים, מחביאה את כל התוכן של העמוד ואז מראה את התוכן הספציפי לפי מזהה ומשנה את הכפתור לפעיל. 
+    var x = document.getElementsByClassName(className);
+    var y = document.getElementsByClassName("activeTab");
+    for (var i=0; i < y.length; i++) {
+        y[i].classList.toggle("activeTab");
+    }
+    for (var i = 0; i < x.length; i++) {
+        x[i].style.display = "none";
+    }
+    document.getElementById(idName).style.display =  "block";
+    button.classList.toggle("activeTab");
+}
+
+// בודק את האכסון המקומי בשביל ההעדפה וכך
+if (localStorage.getItem("theme") === "dark") {
+    document.documentElement.classList.add("dark");
+}
+
+function toggleTheme() {
+    const btn = document.getElementById("themeToggle");
+    const icon = btn.querySelector(".icon");
+
+    document.documentElement.classList.toggle("dark");
+    if (document.documentElement.classList.contains("dark")) {
+        localStorage.setItem("theme", "dark");
+    }
+    else {
+        localStorage.setItem("theme", "light");
+    }
+    btn.classList.add("animate");
+    setTimeout(() => {
+    isDark = !isDark;
+    icon.textContent = isDark ? "🌙" : "☀️";
+    btn.classList.remove("animate");
+    }, 400);
+}
+
+

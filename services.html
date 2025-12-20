@@ -54,11 +54,46 @@
                     <span>אודות</span>
                 </a>
             </li>
+            <li class="theme-section">
+                <button id="themeToggle" class="darkMode" onclick="toggleTheme()">
+                    <span class="icon">☀️</span>
+                    <span class="label">מצב כהה</span>
+                </button>
+            </li>
         </ul>
     </nav>
     
     <!-- התוכן של העמוד -->
     <main>
+        <div class="frame noanimation">
+            <h1>אני מציע מספר שירותים להעסקה כגון:</h1>
+            <div class="break"></div>
+            <div class="tabButtons">
+                <button onclick="displayTab('service', 'fullstack', this)">פיתוח פולסטאק</button>
+                <button onclick="displayTab('service', 'backend', this)">פיתוח באקאנד</button>
+                <button onclick="displayTab('service', 'qa', this)">בודק תוכנה</button>
+                <button onclick="displayTab('service', 'editor', this)">עריכת תוכן</button>
+            </div>
+            <div class="service tab" id="fullstack">   
+                <h2 class="hoverableText">Fullstack development</h2>
+            </div>
+            <div class="service tab" id="backend">
+                <h2 class="hoverableText">Backend development</h2>
+            </div>
+            <div class="service tab" id="qa">
+                <h2 class="hoverableText">Quality Assurance</h2>
+            </div>
+            <div class="service tab" id="editor">
+                <h2 class="hoverableText">Media editor</h2>
+            </div>
+        </div>
     </main>
+
+    <!-- פותח את הטאב הראשון אוטומטית -->
+    <script>window.onload = function() {
+            const firstButton = document.querySelector('.tabButtons button');
+            displayTab('service', 'fullstack', firstButton);
+        };
+    </script>
 </body>
 </html>
