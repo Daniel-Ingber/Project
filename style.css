@@ -230,6 +230,9 @@ a button.link:hover {
         font-size: 101%;
     }
 }
+.tab ul {
+    padding-right: 1rem;
+}
 
 
 /* אנימציות מעבר */
@@ -460,7 +463,17 @@ img#selfie {
         position : fixed;
         top: unset;
         bottom: 0;
-        
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+        ::-webkit-scrollbar {
+            display: none;
+        }
+        .darkMode {
+            border-top: none;
+            padding-top: 1rem;
+            position: absolute;
+            left: 0;
+        }
         > ul {
             padding: 0;
             display: grid;
