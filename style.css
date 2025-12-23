@@ -17,6 +17,7 @@
     --accent2: #9b7458;
     --text2: #4e381d;
     --frame:#ffffff8f;
+    --shadow: #805a2c;
 }
 :root.dark {
     --base: #3a2e22;          
@@ -31,7 +32,8 @@
     --accent-dark: #9a765a;   
     --accent2: #7d5d45;       
     --text2: #bfa78c;
-    --frame: #0000004e;     
+    --frame: #0000004e;
+    --shadow: #805a2c;     
 }
 
 
@@ -62,11 +64,17 @@ h1 {
 h2 {
     font-size: clamp(1.5rem, 0.75rem + 3vw, 3rem);
 }
+h3 {
+    font-size: clamp(1.25rem, 0.85rem + 2vw, 2rem);
+}
 p {
     font-size: clamp(1rem, 0.5rem + 1vw, 1.25rem);
 }
 button {
     font-size: clamp(0.875rem, 0.5rem + 1vw, 1.125rem);
+}
+li:not(nav li){
+    font-size: clamp(1rem, 0.5rem + 1vw, 1.25rem);
 }
 
 * {
@@ -82,12 +90,14 @@ h2, p {
     font-family: 'Heebo';
 }
 .likeh2 {
-    font-size: 1.5em;
+    font-size: clamp(1.5rem, 0.75rem + 3vw, 3rem);
     color: var(--text);
-    font-weight: 700;
+    font-weight: 600;
 }
-.biggerFont {
-    font-size: 1.1em;
+.likeH3 {
+    font-size: clamp(1.25rem, 0.85rem + 2vw, 2rem);
+    color: var(--text);
+    font-weight: 600;
 }
 
 /* עיצוב ספיציפי לקלאסים */
@@ -126,7 +136,7 @@ main {
     border: 1px solid var(--line);
     border-radius: .4em;
     margin-bottom: 20px;
-    box-shadow: 1px 1px 10px var(--line);
+    box-shadow: 1px 1px 10px var(--shadow);
     padding: min(1em, 15%);
     h2,p {
         margin-top: .5em;
@@ -134,9 +144,9 @@ main {
 }
 /* עיצוב בסיסי של אלמנט כפתור */
 a button.link, input[type="submit"] {
-    width: 20vh;
-    height: 5vh;
-    margin: 3vh;
+    width: 20em;
+    height: 3em;
+    margin-top: 1em;
     background-color: var(--base);
     border: solid 2px var(--line);
     border-radius: .3em;
@@ -230,7 +240,7 @@ a button.link:hover {
         font-size: 101%;
     }
 }
-.tab ul {
+.tab ul, ul:not(nav ul){
     padding-right: 1rem;
 }
 
