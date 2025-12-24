@@ -1,7 +1,7 @@
 // קביעת משתנים קבועים לשימוש בפונקציות (משתנים שלא יישתנו ולכן הם בconst)
 const toggleButton = document.getElementById('toggleButton')
 const sidebar = document.getElementById('sidebar')
-var isDark = false;
+var isDark = document.documentElement.classList.contains("dark");
 // פונקציה לפתיחת תפריט הניווט על ידי שינוי המחלקות שלהם (בשימוש עם toggle)
 function toggleSidebar(){
     sidebar.classList.toggle('close')
@@ -54,18 +54,21 @@ function toggleTheme() {
     const icon = btn.querySelector(".icon");
 
     document.documentElement.classList.toggle("dark");
-    if (document.documentElement.classList.contains("dark")) {
-        localStorage.setItem("theme", "dark");
-    }
-    else {
-        localStorage.setItem("theme", "light");
-    }
+
+    const isDark = document.documentElement.classList.contains("dark");
+    localStorage.setItem("theme", isDark ? "dark" : "light");
+
     btn.classList.add("animate");
     setTimeout(() => {
-    isDark = !isDark;
-    icon.textContent = isDark ? "🌙" : "☀️";
-    btn.classList.remove("animate");
-    }, 400);
+        icon.textContent = isDark ? "🌙" : "☀️";
+        btn.classList.remove("animate");
+    }, 200);
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+    const icon = document.querySelector("#themeToggle .icon");
+    const isDark = document.documentElement.classList.contains("dark");
+    icon.textContent = isDark ? "🌙" : "☀️";
+});
 
 

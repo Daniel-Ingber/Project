@@ -67,20 +67,25 @@
     <main>
         <div class="frame">
             <h1>צור קשר</h1>
-            <form action="#" method="post" autocomplete="off" class="form">
+            <form action="https://formsubmit.co/danielingberporfolio@gmail.com" method="POST" autocomplete="off" class="form">
                 <div>
                     <h2>שם מלא:</h2>
-                    <input type="text" placeholder="השם המלא שלך">
-                    <p class="error">הקלט אינו טקסט!</p>
+                    <input type="text" id="name" name="name" placeholder="השם המלא שלך" required>
+                    <p class="error">הקלט אינו שם!</p>
+                </div>
+                <div>
+                    <h2>מספר טלפון:</h2>
+                    <input type="tel" id="telephone" name="telephone" placeholder="123-456-7890" pattern="[0-9]{3}[0-9]{3}[0-9]{4}" required>
+                    <p class="error">הקלט אינו מספר טלפון!</p>
                 </div>
                 <div>
                     <h2>אימייל:</h2>
-                    <input type="email" placeholder="youremail@gmail.com">
+                    <input type="email" id="email" name="email" placeholder="youremail@gmail.com" required>
                     <p class="error">הקלט אינו אימייל תקין!</p>
                 </div>
                 <div>
                     <h2>סיבת הפנייה:</h2>
-                    <select name="סיבת פנייה" id="query">
+                    <select name="סיבת פנייה" id="query" name="query" required>
                         <option value="" hidden></option>
                         <option value="fullstack">פיתוח Fullstack</option>
                         <option value="backend">פיתוח Backend</option>
@@ -92,9 +97,9 @@
                 </div>
                 <div>
                     <h2>פירוט הפנייה:</h2>
-                    <textarea wrap="soft" rows="5" maxlength="160" id="explain"></textarea>
+                    <textarea wrap="soft" rows="5" maxlength="160" name="explain" id="explain" required></textarea>
                 </div>
-                    <input type="submit" id="submit" value="שלח פנייה">
+                    <button>צור קשר!</button>
                 <div>
                 </div>
                 <div>
