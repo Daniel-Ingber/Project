@@ -29,9 +29,8 @@ function closeAllSubMenus(){
     ul.classList.remove('show')
     ul.previousElementSibling.classList.remove('rotate')})
 }
-
+// הפונקצייה מכינה 2 מאגרים של מחלקות, אחד המאגר של כל הכפתורים שמופעלים, והשני המאגר של כל התוכן של הטאבים, היא משנה את כל הכפתורים שכרגע הם פועלים, מחביאה את כל התוכן של העמוד ואז מראה את התוכן הספציפי לפי מזהה ומשנה את הכפתור לפעיל. 
 function displayTab(className, idName, button){
-    // הפונקצייה מכינה 2 מאגרים של מחלקות, אחד המאגר של כל הכפתורים שמופעלים, והשני המאגר של כל התוכן של הטאבים, היא משנה את כל הכפתורים שכרגע הם פועלים, מחביאה את כל התוכן של העמוד ואז מראה את התוכן הספציפי לפי מזהה ומשנה את הכפתור לפעיל. 
     var x = document.getElementsByClassName(className);
     var y = document.getElementsByClassName("activeTab");
     for (var i=0; i < y.length; i++) {
@@ -69,6 +68,26 @@ document.addEventListener("DOMContentLoaded", () => {
     const icon = document.querySelector("#themeToggle .icon");
     const isDark = document.documentElement.classList.contains("dark");
     icon.textContent = isDark ? "🌙" : "☀️";
+});
+
+
+// to-top functionality
+const toTop = document.getElementById('toTop');
+
+window.addEventListener('scroll', () => {
+    if (window.scrollY > 300) {
+        toTop.classList.add('show');
+    } else {
+        toTop.classList.remove('show');
+    }
+});
+
+toTop.addEventListener('click', e => {
+    e.preventDefault();
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
 });
 
 

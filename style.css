@@ -22,6 +22,8 @@
     --button-hover: #8f623f;
     --button-text: #f4e7d6;
     --error: #b84a3a;
+    --toTop : #a8744f;
+    --toTop-hover : #8f623f;
 
 }
 :root.dark {
@@ -43,11 +45,18 @@
     --button-hover: #b28763;
     --button-text: #2c231a;
     --error: #d46a5c;
+    --toTop :#2e2217;
+    --toTop-hover : #5a4738;
 }
 
 
 
 /* איפוס הגדרות אתר לבחירה שלי */
+
+html {
+    scroll-behavior: smooth;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -308,7 +317,30 @@ img#selfie {
     margin: .8em;
     color: var(--text2);
 }
-
+/* כפתור עליה לתחילת עמוד */
+#toTop>svg {
+    position: fixed;
+    height: clamp(60px, 8vw, 80px);
+    width: clamp(60px, 8vw, 80px);
+    fill: var(--toTop);
+    background-color: var(--base);
+    box-shadow: 0px 0px 12px var(--shadow);
+    border-radius: 100%;
+    left: 1%;
+    bottom: 1%;
+}
+#toTop {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease-in-out;
+}
+#toTop>svg:hover {
+        fill: var(--toTop-hover);
+    }
+#toTop.show {
+    opacity: 1;
+    pointer-events: auto;
+}
 /* תחילת העיצוב של הניווט צד */
 #sidebar {
     box-sizing: border-box;
@@ -482,12 +514,18 @@ img#selfie {
         border: none;
         padding: 1em;
     }
+
     image#selfie {
         float: none;
         display: block;
         margin: 1em auto 6em auto; 
         width: clamp(10em, 40vw, 16em);
         height: auto; 
+    }
+
+/* שינוי מיקום הכפתור חזרה למעלה כדי שלא יתנגש בניווט האתר*/
+    #toTop>svg{
+        bottom: 128px;
     }
 /* שינוי ניווט הצד לניווט תחתון בשביל חווית משתמש נוחה יותר */
     #sidebar {
