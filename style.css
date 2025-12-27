@@ -280,10 +280,11 @@ a button.link:hover, .form button:hover {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    width: 45px;
-    height: 45px;
+    width: 32px;
+    height: 32px;
+    background-color: var(--carouselBG);
+    background-size: contain;
     border-radius: 50%;
-    background: var(--accent);
     border: 1px solid var(--line);
     display: flex;
     justify-content: center;
