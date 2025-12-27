@@ -551,6 +551,63 @@ img#selfie {
 
 /* רספונסיביות של האתר לטלפונים */
 @media (max-width: 800px) {
+        /* Prevent horizontal overflow globally */
+    html, body {
+        overflow-x: hidden;
+    }
+
+    /* Form container */
+    .form {
+        width: 100%;
+        max-width: 100%;
+        padding: 1.5rem;
+        box-sizing: border-box;
+    }
+
+    /* Each row inside the form */
+    .form div {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    /* Inputs, selects, textarea */
+    .form input,
+    .form select,
+    .form textarea {
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+        text-indent: 0.75rem;
+    }
+
+    /* Textarea height stays responsive */
+    .form textarea {
+        height: auto;
+        min-height: 120px;
+    }
+
+    /* Submit button */
+    .form button {
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+        margin-top: 1rem;
+    }
+
+    /* Frame wrapper */
+    .frame {
+        width: 100%;
+        max-width: 100%;
+        overflow: visible;
+        box-sizing: border-box;
+    }
+
+    /* Main content */
+    main {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: hidden;
+    }
 
     body {
         grid-template-columns: 1fr;
