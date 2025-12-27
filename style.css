@@ -300,9 +300,9 @@ a button.link:hover, .form button:hover {
     left: .5px;
 }
 
-.carouselNav:hover {
+/* .carouselNav:hover {
     background: var(--button-hover);
-}
+} */
 
 .gallery {
     width: 80%;
@@ -331,7 +331,7 @@ a button.link:hover, .form button:hover {
 
 /* אנימציות מעבר */
 
-.hoverable:hover{
+/* .hoverable:hover{
     transform: scale(1.01);
 }
 
@@ -347,7 +347,7 @@ h2.hoverableText:hover {
     text-indent: .2em;
     text-shadow: 1px 1px var(--line);
     margin-right: .5em;
-}
+} */
 
 /* עיצוב לתמונה בעמוד הבית */
 img#selfie {
@@ -381,9 +381,9 @@ img#selfie {
     pointer-events: none;
     transition: opacity 0.4s ease-in-out;
 }
-#toTop>svg:hover {
+/* #toTop>svg:hover {
         fill: var(--toTop-hover);
-    }
+    } */
 #toTop.show {
     opacity: 1;
     pointer-events: auto;
@@ -469,16 +469,16 @@ img#selfie {
     flex-grow: 1;
 }
 
-#sidebar a:hover, #sidebar .dropdownButton:hover {
+/* #sidebar a:hover, #sidebar .dropdownButton:hover {
     background-color: var(--hover);
     svg:first-child {
         transform: scale(1.3);
     }
-}
+} */
 
-#sidebar ul.sub-menu.show li:hover {
+/* #sidebar ul.sub-menu.show li:hover {
     font-size: 105%;
-}
+} */
 
 #sidebar .sub-menu {
     transition: 200ms ease-in-out;
@@ -542,11 +542,11 @@ img#selfie {
 #sidebar .darkMode.animate .icon {
     opacity: 0.2;
 }
-#sidebar .darkMode:hover {
+/* #sidebar .darkMode:hover {
     :first-child{
     transform: scale(1.3);
     }
-}
+} */
 
 
 /* סוף העיצוב של הניווט צד */
@@ -569,6 +569,10 @@ img#selfie {
     img#selfie {
         width: clamp(10em, 40vw, 16em);
         height: auto; 
+    }
+
+    .carouselNav {
+        opacity: 0;
     }
 /* שינוי מיקום הכפתור חזרה למעלה כדי שלא יתנגש בניווט האתר*/
     #toTop>svg{
@@ -649,5 +653,65 @@ img#selfie {
                 justify-content: center;
             }
         }
+    }
+}
+
+/* אנימציות מעבר (בספריית מדיה בשביל לבטל אותם במכשירי מגע) */
+@media (hover: hover) and (pointer: fine) {
+
+    .hoverable:hover {
+        transform: scale(1.01);
+    }
+
+    .hoverableText:hover {
+        text-decoration: underline;
+        text-indent: 2em;
+        text-shadow: 1px 1px var(--line);
+        margin-right: .5em;
+    }
+
+    h2.hoverableText:hover {
+        text-decoration: underline;
+        text-indent: .2em;
+        text-shadow: 1px 1px var(--line);
+        margin-right: .5em;
+    }
+
+    .carouselNav:hover {
+        background: var(--button-hover);
+    }
+
+    .tabButtons button:hover {
+        background-color: var(--accent2);
+    }
+
+    a button.link:hover,
+    .form button:hover {
+        transform: scale(1.05);
+        background-color: var(--button-hover);
+        font-weight: 900;
+        border: solid 1px var(--line);
+    }
+
+    #toTop > svg:hover {
+        fill: var(--toTop-hover);
+    }
+
+    #sidebar .darkMode:hover :first-child {
+        transform: scale(1.3);
+    }
+
+    #sidebar a:hover,
+    #sidebar .dropdownButton:hover {
+        background-color: var(--hover);
+    }
+
+    #sidebar a:hover svg:first-child,
+    #sidebar .dropdownButton:hover svg:first-child {
+        transform: scale(1.3);
+    }
+
+    #sidebar ul.sub-menu.show li:hover {
+        font-size: 105%;
     }
 }
