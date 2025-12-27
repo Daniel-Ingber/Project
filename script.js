@@ -1,8 +1,8 @@
-// קביעת משתנים קבועים לשימוש בפונקציות (משתנים שלא יישתנו ולכן הם בconst)
+// תפריט הניווט, ניהול מקרי קיצון של פתיחת תפריט
 const toggleButton = document.getElementById('toggleButton')
 const sidebar = document.getElementById('sidebar')
 var isDark = document.documentElement.classList.contains("dark");
-// פונקציה לפתיחת תפריט הניווט על ידי שינוי המחלקות שלהם (בשימוש עם toggle)
+
 function toggleSidebar(){
     sidebar.classList.toggle('close')
     toggleButton.classList.toggle('rotate')
@@ -10,40 +10,41 @@ function toggleSidebar(){
 }
 
 function toggleSubMenu(button){
-// אם כפתור לא במחלקה של visible אז תריץ את הפונקציה שסוגרת את כל תתי הניווטים 
-if(!button.nextElementSibling.classList.contains('show')){
-    closeAllSubMenus()
-}
+
+    if(!button.nextElementSibling.classList.contains('show')){closeAllSubMenus()}
+
     button.nextElementSibling.classList.toggle('show')
     button.classList.toggle('rotate')
-// אם קיים בsidebar המחלקה close אז תוריד גם את close וגם לtoggleButton תשנה את rotate 
+
     if(sidebar.classList.contains('close')){
-    sidebar.classList.toggle('close')
-    toggleButton.classList.toggle('rotate')
+        sidebar.classList.toggle('close')
+        toggleButton.classList.toggle('rotate')
     }
 }
 
 function closeAllSubMenus(){
-  // לולאה שבודקת את כל הילדים של sidebar בשביל כל האלמנטים עם המחלקה visible ומריצה לולאה שבשביל כל ul בarray מורידים לו את המחלקה visible וגם מוחקת את המחלקה rotate בשביל אנימציה של שינוי הicon 
     Array.from(sidebar.getElementsByClassName('show')).forEach(ul => {
     ul.classList.remove('show')
     ul.previousElementSibling.classList.remove('rotate')})
 }
-// הפונקצייה מכינה 2 מאגרים של מחלקות, אחד המאגר של כל הכפתורים שמופעלים, והשני המאגר של כל התוכן של הטאבים, היא משנה את כל הכפתורים שכרגע הם פועלים, מחביאה את כל התוכן של העמוד ואז מראה את התוכן הספציפי לפי מזהה ומשנה את הכפתור לפעיל. 
+
 function displayTab(className, idName, button){
     var x = document.getElementsByClassName(className);
     var y = document.getElementsByClassName("activeTab");
+
     for (var i=0; i < y.length; i++) {
         y[i].classList.toggle("activeTab");
     }
+
     for (var i = 0; i < x.length; i++) {
         x[i].style.display = "none";
     }
+    
     document.getElementById(idName).style.display =  "block";
     button.classList.toggle("activeTab");
 }
 
-// בודק את האכסון המקומי בשביל ההעדפה וכך
+// מעבר מצב כהה למצב בהיר וחזרה, שמירת המצב בזיכרון ואפיונו
 if (localStorage.getItem("theme") === "dark") {
     document.documentElement.classList.add("dark");
 }
@@ -55,8 +56,8 @@ function toggleTheme() {
     document.documentElement.classList.toggle("dark");
 
     const isDark = document.documentElement.classList.contains("dark");
-    localStorage.setItem("theme", isDark ? "dark" : "light");
 
+    localStorage.setItem("theme", isDark ? "dark" : "light");
     btn.classList.add("animate");
     setTimeout(() => {
         icon.textContent = isDark ? "🌙" : "☀️";
@@ -67,11 +68,12 @@ function toggleTheme() {
 document.addEventListener("DOMContentLoaded", () => {
     const icon = document.querySelector("#themeToggle .icon");
     const isDark = document.documentElement.classList.contains("dark");
+
     icon.textContent = isDark ? "🌙" : "☀️";
 });
 
 
-// to-top functionality
+// כפתור לעלות למעלה בדפים ארוכים
 const toTop = document.getElementById('toTop');
 
 window.addEventListener('scroll', () => {
@@ -89,6 +91,127 @@ toTop.addEventListener('click', e => {
         behavior: 'smooth'
     });
 });
+
+// קרוסלת כרטיסים - שורת כרטיסים שזזה לפי כמות האינדקס
+const cardsContainer = document.querySelector(".cards");
+let cards = document.querySelectorAll(".card");
+
+// העתקה של האלמנט הראשון והאחרון
+const firstClone = cards[0].cloneNode(true);
+const lastClone = cards[cards.length - 1].cloneNode(true);
+
+firstClone.classList.add("clone");
+lastClone.classList.add("clone");
+
+// הכנסת ההעתקות לרשימה
+cardsContainer.appendChild(firstClone);
+cardsContainer.insertBefore(lastClone, cardsContainer.firstChild);
+
+// עדכון רשימת הכרטיסים
+cards = document.querySelectorAll(".card");
+
+let cardWidth = cards[0].offsetWidth;
+let cardIndex = 1;
+let isAnimating = false; // מונע יציאה מגבולות
+
+// מעבר בין כל כרטיס
+function updateCard(animate = true) {
+    isAnimating = animate; // נועל בזמן אנימציה
+    cardsContainer.style.transition = animate ? "transform 0.3s ease" : "none";
+    cardsContainer.style.transform = `translateX(${cardIndex * cardWidth}px)`;
+}
+
+// כפתורים
+document.getElementById("next").addEventListener("click", () => {
+    if (isAnimating) return; // מונע ספאם
+    cardIndex++;
+    updateCard(true);
+});
+
+document.getElementById("prev").addEventListener("click", () => {
+    if (isAnimating) return; // מונע ספאם
+    cardIndex--;
+    updateCard(true);
+});
+
+// שרשור כרטיסים
+cardsContainer.addEventListener("transitionend", () => {
+    // אם transition בוטל — לא להפעיל לוגיקה
+    const style = getComputedStyle(cardsContainer);
+    if (style.transitionDuration === "0s") {
+        isAnimating = false;
+        return;
+    }
+
+    if (cards[cardIndex].classList.contains("clone")) {
+        if (cardIndex === 0) {
+            cardIndex = cards.length - 2; // קפיצה לכרטיס האחרון האמיתי
+        } else if (cardIndex === cards.length - 1) {
+            cardIndex = 1; // קפיצה לכרטיס הראשון האמיתי
+        }
+        updateCard(false); // ללא אנימציה
+    }
+
+    isAnimating = false;    
+});
+
+// רספונסיביות
+window.addEventListener("resize", () => {
+    cardWidth = cards[0].offsetWidth;
+    updateCard(false);
+});
+
+const carouselWrapper = document.querySelector(".carousel");
+
+if (window.ResizeObserver && carouselWrapper) {
+    const observer = new ResizeObserver(() => {
+        recalcCardWidth();
+    });
+    observer.observe(carouselWrapper);
+}
+
+function recalcCardWidth() {
+    cardWidth = cards[0].offsetWidth;
+    updateCard(false);
+}
+
+
+// קריאה התחלתית
+updateCard(false);
+
+// מעבר במכשירי טאצ' עם האצבע
+let startX = 0;
+let isDragging = false;
+
+cardsContainer.addEventListener("touchstart", (e) => {
+    if (isAnimating) return; 
+    startX = e.touches[0].clientX;
+    isDragging = true;
+    cardsContainer.style.transition = "none";
+});
+
+cardsContainer.addEventListener("touchmove", (e) => {
+    if (!isDragging) return;
+    const diff = e.touches[0].clientX - startX;
+    cardsContainer.style.transform = `translateX(${diff + cardIndex * cardWidth}px)`;
+});
+
+cardsContainer.addEventListener("touchend", (e) => {
+    if (!isDragging) return;
+    isDragging = false;
+
+    const diff = e.changedTouches[0].clientX - startX;
+
+    if (diff > 50 && !isAnimating) {
+        cardIndex++;
+    }
+    else if (diff < -50 && !isAnimating) {
+        cardIndex--;
+    }
+
+    updateCard(true);
+});
+
 
 
 
