@@ -561,6 +561,7 @@ img#selfie {
         width: 100%;
         max-width: 100%;
         padding: 1.5rem;
+        padding-left: 1.5em;
         box-sizing: border-box;
     }
 
@@ -598,12 +599,15 @@ img#selfie {
     .frame {
         width: 100%;
         max-width: 100%;
+        padding: 1em;
+        padding-left: 1.5em;
         overflow: visible;
         box-sizing: border-box;
     }
 
     /* Main content */
     main {
+        padding: 2em 1em 60px 1em;
         width: 100%;
         max-width: 100%;
         overflow-x: hidden;
