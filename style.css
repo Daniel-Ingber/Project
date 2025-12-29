@@ -405,6 +405,16 @@ ul:not(nav ul) {
     object-position: 0 0;
 }
 
+.card.onlyImage {
+    padding: 0;
+}
+.card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 0 0;
+}
+
 .card .heading {
     text-decoration: underline;
     padding: 1rem;
