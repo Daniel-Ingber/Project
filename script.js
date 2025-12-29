@@ -1,7 +1,7 @@
 // תפריט הניווט, ניהול מקרי קיצון של פתיחת תפריט
 const toggleButton = document.getElementById('toggleButton')
 const sidebar = document.getElementById('sidebar')
-var isDark = document.documentElement.classList.contains("dark");
+let isDark = document.documentElement.classList.contains("dark");
 
 function toggleSidebar(){
     sidebar.classList.toggle('close')
@@ -29,14 +29,14 @@ function closeAllSubMenus(){
 }
 
 function displayTab(className, idName, button){
-    var x = document.getElementsByClassName(className);
-    var y = document.getElementsByClassName("activeTab");
+    let x = document.getElementsByClassName(className);
+    let y = document.getElementsByClassName("activeTab");
 
-    for (var i=0; i < y.length; i++) {
+    for (let i=0; i < y.length; i++) {
         y[i].classList.toggle("activeTab");
     }
 
-    for (var i = 0; i < x.length; i++) {
+    for (let i = 0; i < x.length; i++) {
         x[i].style.display = "none";
     }
     

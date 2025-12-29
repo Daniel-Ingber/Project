@@ -20,9 +20,12 @@
     --button: #a8744f;
     --button-hover: #8f623f;
     --button-text: #f4e7d6;
-    --error: #b84a3a;
     --toTop: #a8744f;
     --toTop-hover: #8f623f;
+    --error: #9e2020;
+    --carousel-bg: #e3c7a1; 
+    --carousel-button: #b08963;
+    --carousel-hover: #c7a27d; 
 }
 
 :root.dark {
@@ -43,9 +46,12 @@
     --button: #c49a74;
     --button-hover: #b28763;
     --button-text: #2c231a;
-    --error: #d46a5c;
     --toTop: #2e2217;
     --toTop-hover: #5a4738;
+    --error: #9e2020;
+    --carousel-bg: #2f251c;
+    --carousel-button: #a79482;
+    --carousel-hover: #d6b696;
 }
 
 /* איפוס הגדרות אתר לבחירה שלי */
@@ -175,7 +181,36 @@ main p {
 
 /* עיצוב של פוטר */
 footer {
-    margin-top: 300px;
+    margin-top: 150px;
+    height: 50vh;
+    border-top: 1px solid var(--line);
+    display: flex;
+    flex-direction: column;
+    padding: 5rem;
+    padding-bottom: 0;
+}
+
+footer h2 {
+    text-decoration: underline;
+    padding-bottom: 1rem;
+}
+
+footer div {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 4rem;
+    margin: 1rem;
+}
+
+footer div a {
+    text-decoration: none;
+    color: var(--text);
+}
+
+footer div.bottom {
+    justify-content: center;
 }
 
 /* עיצוב בסיסי של אלמנט כפתור */
@@ -208,7 +243,7 @@ a button.link:hover,
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
-    background-color: var(--accent-dark);
+    background-color: var(--carousel-bg);
     border: 2px solid var(--line);
     border-radius: .5em;
 }
@@ -309,15 +344,16 @@ ul:not(nav ul) {
     transform: translateY(-50%);
     width: 32px;
     height: 32px;
-    background-color: var(--carouselBG);
+    background-color: var(--carousel-button);
     background-size: contain;
+    fill: var(--line);
     border-radius: 50%;
     border: 1px solid var(--line);
     display: flex;
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    z-index: 10;
+    z-index: 0;
 }
 
 .carouselNav.prev {
@@ -326,6 +362,7 @@ ul:not(nav ul) {
 
 .carouselNav.next {
     left: .5px;
+    rotate: 180deg;
 }
 
 .gallery {
@@ -345,13 +382,38 @@ ul:not(nav ul) {
     flex: 0 0 100%;
     height: 400px;
     display: flex;
-    justify-content: center;
     align-items: center;
+    flex-direction: column;
     font-size: 2rem;
-    background: var(--accent);
+    background: var(--carousel-bg);
     border-right: 1px solid var(--line);
+    padding-top: 2rem;
 }
 
+.card .preview {
+    width: 80%;
+    height: 40%;
+    margin-bottom: 1rem;
+    border: 1px solid var(--line);
+    box-shadow: 4px 4px 5px var(--shadow);
+}
+
+.card .preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 0 0;
+}
+
+.card .heading {
+    text-decoration: underline;
+    padding: 1rem;
+    padding-bottom: 0;
+}
+
+.card .aboutProject {
+    padding: 1rem;
+}
 /* עיצוב לתמונה בעמוד הבית */
 img#selfie {
     width: 20em;
@@ -551,12 +613,9 @@ img#selfie {
 
 /* רספונסיביות של האתר לטלפונים */
 @media (max-width: 800px) {
-        /* Prevent horizontal overflow globally */
     html, body {
         overflow-x: hidden;
     }
-
-    /* Form container */
     .form {
         width: 100%;
         max-width: 100%;
@@ -565,13 +624,12 @@ img#selfie {
         box-sizing: border-box;
     }
 
-    /* Each row inside the form */
+
     .form div {
         width: 100%;
         box-sizing: border-box;
     }
 
-    /* Inputs, selects, textarea */
     .form input,
     .form select,
     .form textarea {
@@ -581,13 +639,11 @@ img#selfie {
         text-indent: 0.75rem;
     }
 
-    /* Textarea height stays responsive */
     .form textarea {
         height: auto;
         min-height: 120px;
     }
 
-    /* Submit button */
     .form button {
         width: 100%;
         max-width: 100%;
@@ -595,7 +651,6 @@ img#selfie {
         margin-top: 1rem;
     }
 
-    /* Frame wrapper */
     .frame {
         width: 100%;
         max-width: 100%;
@@ -605,7 +660,6 @@ img#selfie {
         box-sizing: border-box;
     }
 
-    /* Main content */
     main {
         padding: 2em 1em 60px 1em;
         width: 100%;
@@ -745,9 +799,16 @@ img#selfie {
         text-shadow: 1px 1px var(--line);
         margin-right: .5em;
     }
+    
+    footer div a:hover {
+        text-decoration: underline;
+    }
+    footer div a:hover svg {
+        transform: rotate(10deg);
+    }
 
     .carouselNav:hover {
-        background: var(--button-hover);
+        background: var(--carousel-hover);
     }
 
     .tabButtons button:hover {
@@ -760,6 +821,11 @@ img#selfie {
         background-color: var(--button-hover);
         font-weight: 900;
         border: solid 1px var(--line);
+    }
+
+    .card .preview:hover {
+        scale: 1.03;
+        box-shadow: 5px 5px 10px var(--shadow);
     }
 
     #toTop > svg:hover {
