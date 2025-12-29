@@ -57,6 +57,7 @@
 /* איפוס הגדרות אתר לבחירה שלי */
 html {
     scroll-behavior: smooth;
+    max-width: 100vw;
 }
 
 * {
@@ -68,6 +69,7 @@ html {
 
 /* עיצוב ראשוני לכל תוכן הדף HTML */
 body {
+    max-width: 100vw;
     min-height: 100vh;
     min-height: 100dvh;
     background: linear-gradient(to bottom, var(--base-light), var(--base), var(--base-dark));
@@ -652,8 +654,7 @@ img#selfie {
     }
 
     .frame {
-        width: 100%;
-        max-width: 100%;
+        max-width: 90vw;
         padding: 1em;
         padding-left: 1.5em;
         overflow: visible;
@@ -702,7 +703,7 @@ img#selfie {
     #sidebar {
         z-index: 1;
         height: 60px;
-        width: 100%;
+        width: 100% !important; 
         border-left: none;
         border-top: 1px solid var(--line);
         position: fixed;
