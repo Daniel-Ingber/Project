@@ -616,6 +616,11 @@ img#selfie {
     html, body {
         overflow-x: hidden;
     }
+
+    footer {
+        width: 100vw;
+    }
+    
     .form {
         width: 100%;
         max-width: 100%;
