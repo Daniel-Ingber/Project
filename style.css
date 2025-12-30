@@ -702,7 +702,17 @@ img#selfie {
     }
 
     .carouselNav {
-        opacity: 0;
+        display: none;
+    }
+
+    .card .aboutProject {
+        display: none;
+    }
+
+    .card .preview {
+        width: 90%;
+        height: 70%;
+        margin: 0;
     }
 
     /* שינוי מיקום הכפתור חזרה למעלה כדי שלא יתנגש בניווט האתר */
