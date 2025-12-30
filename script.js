@@ -44,6 +44,7 @@ function displayTab(className, idName, button){
     button.classList.toggle("activeTab");
 }
 
+
 // מעבר מצב כהה למצב בהיר וחזרה, שמירת המצב בזיכרון ואפיונו
 if (localStorage.getItem("theme") === "dark") {
     document.documentElement.classList.add("dark");
@@ -91,6 +92,7 @@ toTop.addEventListener('click', e => {
         behavior: 'smooth'
     });
 });
+
 
 // קרוסלת כרטיסים - שורת כרטיסים שזזה לפי כמות האינדקס
 const cardsContainer = document.querySelector(".cards");
